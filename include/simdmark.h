@@ -9,6 +9,7 @@
 
 #define SM_VERSION_MAJ 1
 #define SM_VERSION_MIN 0
+#define SM_ITERATIONS 10000
 
 #define SM_BITFLAG(val, cmp) ((val & cmp) == cmp)
 

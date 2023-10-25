@@ -3,7 +3,7 @@
 
 int main(const int argc, const char** argv)
 {
-    uint64_t iterations = 10000;
+    uint64_t iterations = SM_ITERATIONS;
     for (int i = 1; i < argc; i++)
     {
         if (!strcmp(argv[i], "-h") || !strcmp(argv[i], "--help"))
@@ -45,12 +45,12 @@ int main(const int argc, const char** argv)
         else if (!strcmp(argv[i], "-i") || !strcmp(argv[i], "--iterations"))
         {
             int64_t iter = atoll(argv[++i]);
-            iterations = iter < 0 ? iter * -1 : iter;
+            iterations = iter < 0 ? SM_ITERATIONS : iter;
         }
         else if (argv[i][0] == '-')
         {
             printf("Unknown parameter \"%s\"\n", argv[i]);
-            return;
+            return 0;
         }
     }
 
