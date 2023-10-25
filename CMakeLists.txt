@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.24)
+project(simdmark C)
+set(CMAKE_C_STANDARD_REQUIRED 11)
+add_executable(simdmark src/simdmark.c)
+target_include_directories(simdmark PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/)
