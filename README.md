@@ -3,7 +3,7 @@
 
 # Usage
 Running the program with no arguments will run all possible tests automatically.
-By default, all tests are run with `5000` iterations each.
+By default, all tests are run with `10000` iterations each.
 
 Name | Description
 --- | ---
