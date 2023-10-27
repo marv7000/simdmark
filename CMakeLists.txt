@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.24)
+cmake_minimum_required(VERSION 3.20)
 project(simdmark C)
 set(CMAKE_C_STANDARD_REQUIRED 11)
 add_executable(simdmark src/simdmark.c)
