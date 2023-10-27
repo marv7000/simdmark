@@ -44,8 +44,13 @@ int main(const int argc, const char** argv)
         }
         else if (!strcmp(argv[i], "-i") || !strcmp(argv[i], "--iterations"))
         {
-            int64_t iter = atoll(argv[++i]);
-            iterations = iter < 0 ? SM_ITERATIONS : iter;
+            if (++i >= argc)
+                printf("Parameter \"-i\" expects a value, using default value of %i\n", SM_ITERATIONS);
+            else
+            {
+                int64_t iter = atoll(argv[i]);
+                iterations = iter < 0 ? SM_ITERATIONS : iter;
+            }
         }
         else if (argv[i][0] == '-')
         {
@@ -54,7 +59,7 @@ int main(const int argc, const char** argv)
         }
     }
 
-    printf("Running tests with %i iterations...\n\n", iterations);
+    printf("Running tests with %li iterations...\n\n", iterations);
     // TODO: Add new tests here.
     char* testNames[] =
     {
