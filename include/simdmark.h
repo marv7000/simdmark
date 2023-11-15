@@ -13,12 +13,6 @@
 
 #define SM_BITFLAG(val, cmp) ((val & cmp) == cmp)
 
-#define SM_CPUID(level, a, b, c, d) \
-              __asm__("xor %%ecx, %%ecx\n" \
-                      "cpuid\n" \
-                      : "=a"(a), "=b"(b), "=c"(c), "=d"(d) \
-                      : "0"(level))
-
 typedef struct _SimdFeatures
 {
     bool SSE : 1;
@@ -53,9 +47,7 @@ static inline void sm_cpuId(int leaf, int subleaf, uint32_t registers[4])
         exit(1);
         return;
     }
-    // We use our own macro here instead of the one in "cpuid.h" because ECX is not reset properly,
-    // which results in an invalid result for EAX=7 ECX=0.
-    SM_CPUID(leaf, registers[0], registers[1], registers[2], registers[3]);
+    __get_cpuid_count(leaf, subleaf, registers + 0, registers + 1, registers + 2, registers +3);
 }
 
 // Gets all SIMD extensions.
